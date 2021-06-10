@@ -1,7 +1,7 @@
 class materialJunk {
     constructor() {
-        this.junkList = '/assets/js/junklist.js';
-        this.materialList = '/assets/js/materiallist.js';
+        this.junkList = 'assets/js/junklist.js';
+        this.materialList = 'assets/js/materiallist.js';
         this.jsonResponse = '';
         this.selectContainer = document.getElementById('materialselect');
         this.junkContainer = document.getElementById('junklist');
