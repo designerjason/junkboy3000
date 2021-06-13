@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm-run-all --parallel build:js build:css",
-    "build:css": "node-sass -o docs/assets/css dist/assets/css/style.scss --output-style compressed",
+    "build:css": "node-sass -o docs/assets/css dist/assets/sass/style.scss --output-style compressed",
     "build:js": "uglifyjs dist/assets/js/main.js -o docs/assets/js/scripts.min.js"
   },
   "author": "",
