@@ -3,17 +3,42 @@
   "version": "1.0.0",
   "description": "quick filtered list of materials from junk items",
   "main": "index.js",
+  "watch": {
+    "build:css": {
+      "patterns": [
+        "dist/assets/sass"
+      ],
+      "extensions": [
+        "scss"
+      ]
+    },
+    "build:js": {
+      "patterns": [
+        "dist/assets/js"
+      ],
+      "extensions": [
+        "js"
+      ]
+    }
+  },
   "scripts": {
-    "start": "npm-run-all --parallel build:js build:css",
+    "build:all": "npm-run-all --parallel build:js build:css",
     "build:css": "node-sass -o docs/assets/css dist/assets/sass/style.scss --output-style compressed",
-    "build:js": "uglifyjs dist/assets/js/main.js -o docs/assets/js/scripts.min.js"
+    "build:js": "uglifyjs dist/assets/js/main.js -o docs/assets/js/scripts.min.js",
+    "dev": "npm-run-all --parallel serve watch",
+    "serve": "node ./node_modules/http-server/bin/http-server ./docs",
+    "watch": "npm-watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concat": "^1.0.3",
-    "node-sass": "^6.0.0",
+    "node-sass": "^9.0.0",
     "npm-run-all": "^4.1.5",
-    "uglify-js": "^3.13.9"
+    "uglify-js": "^3.17.4"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "npm-watch": "^0.11.0"
   }
 }
