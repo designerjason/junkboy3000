@@ -16,6 +16,15 @@ class materialJunk {
         });
     }
 
+    detectSticky() {
+        const el = document.querySelector("body .table-header")
+        const observer = new IntersectionObserver( 
+            ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+            { threshold: [1] }
+        );
+        observer.observe(el);
+    }
+
     // build the select options
     buildSelect(jsonArr) {
         fetch(jsonArr)
@@ -37,6 +46,7 @@ class materialJunk {
         .then((data) => {            
             let data_filter = data.filter( element => element.materials[0].includes(term))
             this.listJunk(data_filter);
+            this.detectSticky();
         })
         .catch(err => { throw err });
     }

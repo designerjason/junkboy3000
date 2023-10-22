@@ -16,6 +16,11 @@
     --pipglow: rgba(0, 225, 112, 0.7);
 }
 
+#junklist {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
 body {
     animation: .07s pipscreen infinite step-end;
     background-color: #000;
@@ -50,17 +55,15 @@ select {
 }
 
 .table-header {
-    // todo sticky table header
-    //position: sticky;
-    //top: -1px;
+    position: sticky;
+    top: -1px;
 
     &.is-pinned {
-        background-color: #000;
+        background-color: rgba(#011a01, .9);
     }
 }
 
 th {
-    //font-size: .9rem;
     text-align: left;
 }
 
@@ -72,6 +75,5 @@ th, td {
 table {
     border-collapse: collapse;
     font-size: .8rem;
-    margin: auto;
-    max-width: 600px;
+    width: 100%;
 }
