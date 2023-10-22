@@ -9,10 +9,9 @@ class materialJunk {
 
     init() {
         this.buildSelect( this.materialList );
-
         // listen for select field change
         document.addEventListener('change', () => {
-            let materialSelect = document.getElementById('materialselect').value;
+            const materialSelect = document.getElementById('materialselect').value;
             this.getFiltered(materialSelect);
         });
     }
@@ -49,7 +48,7 @@ class materialJunk {
         junkEl.innerHTML = '';
 
         data_output += '<table>';
-        data_output += '<thead><tr><th>Name</th><th>Weight</th><th>Value</th><th>Materials</th></tr></thead><tbody>';
+        data_output += '<thead class="table-header"><tr><th>Name</th><th>Wgt</th><th>Val</th><th>Material</th></tr></thead><tbody>';
 
         filtered.forEach( item => {
             data_output += 
