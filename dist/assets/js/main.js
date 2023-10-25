@@ -1,18 +1,18 @@
-class materialJunk {
+class ComponentJunk {
     constructor() {
         this.junkList = 'assets/js/junklist.js';
-        this.materialList = 'assets/js/materiallist.js';
+        this.componentList = 'assets/js/componentlist.js';
         this.jsonResponse = '';
-        this.selectContainer = document.getElementById('materialselect');
+        this.selectContainer = document.getElementById('componentselect');
         this.junkContainer = document.getElementById('junklist');
     }
 
     init() {
-        this.buildSelect( this.materialList );
+        this.buildSelect( this.componentList );
         // listen for select field change
         document.addEventListener('change', () => {
-            const materialSelect = document.getElementById('materialselect').value;
-            this.getFiltered(materialSelect);
+            const componentSelect = document.getElementById('componentselect').value;
+            this.getFiltered(componentSelect);
         });
     }
 
@@ -21,7 +21,7 @@ class materialJunk {
         fetch(jsonArr)
         .then(res => res.json())
         .then((data) => {
-            this.selectContainer.innerHTML += "<option value='' selected disabled>Select Material</option>";
+            this.selectContainer.innerHTML += "<option value='' selected disabled>Select Component</option>";
 
             data.forEach(element => {
                 this.selectContainer.innerHTML += `<option value="${element.name}">${element.name}</option>`;
@@ -35,7 +35,7 @@ class materialJunk {
         fetch(this.junkList)
         .then(res => res.json())
         .then((data) => {            
-            let data_filter = data.filter( element => element.materials[0].includes(term))
+            let data_filter = data.filter( element => element.components[0].includes(term))
             this.listJunk(data_filter);
         })
         .catch(err => { throw err });
@@ -48,7 +48,7 @@ class materialJunk {
         junkEl.innerHTML = '';
 
         data_output += '<table>';
-        data_output += '<thead class="table-header"><tr><th>Name</th><th>Wgt</th><th>Val</th><th>Material</th></tr></thead><tbody>';
+        data_output += '<thead class="table-header"><tr><th>Name</th><th>Wgt</th><th>Val</th><th>Component</th></tr></thead><tbody>';
 
         filtered.forEach( item => {
             data_output += 
@@ -56,7 +56,7 @@ class materialJunk {
             <td>${item.name}</td>
             <td>${item.weight}</td>
             <td>${item.value}</td>
-            <td>${item.materials.join(', ')}</td>
+            <td>${item.components.join(', ')}</td>
             </tr>`;
         });
 
@@ -66,5 +66,5 @@ class materialJunk {
     }
 }
 
-const myClass = new materialJunk();
+const myClass = new ComponentJunk();
 myClass.init();

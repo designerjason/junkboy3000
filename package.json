@@ -1,7 +1,7 @@
 {
   "name": "junkboy3000",
   "version": "1.0.0",
-  "description": "quick filtered list of materials from junk items",
+  "description": "quick filtered list of junk, with the components that can be extracted",
   "main": "index.js",
   "watch": {
     "build:css": {
